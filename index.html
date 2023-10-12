@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freshers' Riddle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            color: #666;
+        }
+        .riddle-question {
+            font-weight: bold;
+            color: #0073e6;
+        }
+        .answer-input {
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .submit-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #0073e6;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+        .congratulations-message {
+            font-weight: bold;
+            font-size: 24px;
+            color: #0073e6;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Freshers' Riddle</h1>
+        <p>Can you unlock the date for the most epic Freshers' party?</p>
+
+        <div id="stage1">
+            <p class="riddle-question">Stage 1: I'm a famous singer, loved by fans near and far,<br>
+                My first name rhymes with "sailor," a superstar.<br>
+                My last name starts with "Kha" and ends like the sun,<br>
+                Add '07 to the mix, the riddle's nearly done.<br>
+                Together, I'm an Instagram username to uncover,<br>
+               Read the caption of my post to move forward<br></p>
+            <input type="text" id="answer1" class="answer-input" placeholder="Your Answer">
+            <button onclick="checkAnswer(1)" class="submit-button">Submit</button>
+        </div>
+
+        <div id="stage2" style="display: none;">
+            <p class="riddle-question">Stage 2: I'm a musical legend, my tunes are a delight,<br>
+                With a name like a melody, I soar to great heights.<br>
+                My first name is a type of sound, quite clear,<br>
+                And '.42' in my username, let's get that in gear.<br>
+                Together, I'm an Instagram username, it's plain to see,<br>
+                Solve my riddle, and you'll unlock the next key. <br>
+                Read the caption of my post to move forward</p>
+            <input type="text" id="answer2" class="answer-input" placeholder="Your Answer">
+            <button onclick="checkAnswer(2)" class="submit-button">Submit</button>
+        </div>
+
+        <p id="congratulations" class="congratulations-message" style="display: none;"></p>
+    </div>
+
+    <script>
+        let currentStage = 1;
+
+        function checkAnswer(stage) {
+            const answerId = "answer" + stage;
+            const answer = document.getElementById(answerId).value.trim().toLowerCase();
+
+            switch (stage) {
+                case 1:
+                    if (answer === "la") {
+                        document.getElementById("stage1").style.display = "none";
+                        document.getElementById("stage2").style.display = "block";
+                        currentStage = 2;
+                    } else {
+                        alert("Oops! That's not correct. Try again.");
+                    }
+                    break;
+                case 2:
+                    if (answer === "14") {
+                        document.getElementById("stage2").style.display = "none";
+                        document.getElementById("congratulations").textContent = "Congratulations! You've unlocked the date for the Freshers' Party on October 14!";
+                        document.getElementById("congratulations").style.display = "block";
+                    } else {
+                        alert("Oops! That's not correct. Try again.");
+                    }
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
